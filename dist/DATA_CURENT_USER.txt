@@ -1,0 +1,7 @@
+Email= 
+Password= 
+Test_run= 
+Path_to_file= C:/Users/ivan.shakirov/Desktop/Excel.xlsx
+List_name= FRS
+Path_to_chrome_driver= C:/Users/ivan.shakirov/PycharmProjects/Performance_Check/chromedriver/chromedriver.exe
+Only_today= True
