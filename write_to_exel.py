@@ -5,11 +5,15 @@ import time
 
 
 def exel(times, result, path_to_file, list_name):
-    # print('write_to_exel started work')
-    # wb = Workbook()
-    # wb = wb.create_sheet("FRS")
-    wb = load_workbook(path_to_file)
-    work_sheet = wb[list_name]
+    print('write_to_exel started work')
+
+    try:
+        wb = load_workbook(path_to_file)
+        work_sheet = wb[list_name]
+    except:
+        wb = Workbook()
+        work_sheet = wb.create_sheet(list_name)
+
     last_column = 1
 
 # Find out the last empty column
@@ -43,7 +47,10 @@ def exel(times, result, path_to_file, list_name):
             work_cell_for_case = work_sheet.cell(row=i, column=last_column)
             work_cell_for_case.value = result[name][0]
             work_cell_for_time = work_sheet.cell(row=i, column=last_column + 1)
-            work_cell_for_time.value = time.strftime("%H:%M", time.gmtime(result[name][1]))
+            if result[name][1] < 86400:
+                work_cell_for_time.value = time.strftime("%H:%M", time.gmtime(result[name][1]))
+            else:
+                work_cell_for_time.value = time.strftime("%d:%H:%M", time.gmtime(result[name][1] - 86400))
             del result[name]
             print(result)
             empty = 5
@@ -69,7 +76,10 @@ def exel(times, result, path_to_file, list_name):
             work_cell_for_case = work_sheet.cell(row=i, column=last_column)
             work_cell_for_case.value = result[name][0]
             work_cell_for_time = work_sheet.cell(row=i, column=last_column + 1)
-            work_cell_for_time.value = time.strftime("%H:%M", time.gmtime(result[name][1]))
+            if result[name][1] < 86400:
+                work_cell_for_time.value = time.strftime("%H:%M", time.gmtime(result[name][1]))
+            else:
+                work_cell_for_time.value = time.strftime("%d:%H:%M", time.gmtime(result[name][1] - 86400))
             # del result[name]
             i = i + 1
             # print("Я тут 5")

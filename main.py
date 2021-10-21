@@ -28,5 +28,5 @@ result = parsing_testrail.main(test_run, email, password, path_to_chrome_driver,
 write_to_exel.exel(time, result, path_to_file, list_name)
 
 
-# TO DOs
+# TO DO
 
