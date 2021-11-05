@@ -9,7 +9,10 @@ def exel(times, result, path_to_file, list_name):
 
     try:
         wb = load_workbook(path_to_file)
-        work_sheet = wb[list_name]
+        try:
+            work_sheet = wb[list_name]
+        except:
+            work_sheet = wb.create_sheet(list_name)
     except:
         wb = Workbook()
         work_sheet = wb.create_sheet(list_name)

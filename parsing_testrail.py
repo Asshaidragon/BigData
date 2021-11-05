@@ -92,7 +92,7 @@ def parsing(driver):
     for i in elements:
         i.find_element_by_xpath('a/ins').click()
         who = i.text
-        if who == "   Unassigned": continue
+        if who == "   Unassigned" or who == "   Untested": continue
         who = who[13:]
         # print(who)
         time.sleep(1)
@@ -107,7 +107,7 @@ def parsing(driver):
                 # estimates.append(line.find_element_by_xpath('td[7]').text)
                 elapseds.append(line.find_element_by_xpath('td[%d]' % Elapsed_position).text)
             except:
-                print('херь')
+                print('Что-то пошло не так')
                 pass
         # print(elapseds)
         common_elapsed = time_translation(elapseds)
